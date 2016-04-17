@@ -1,0 +1,8 @@
+.DS_Store
+
+// document
+*.docx
+*.doc
+*.pdf
+*.zip
+
