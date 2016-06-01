@@ -1,9 +1,7 @@
 #include "AppDelegate.h"
-#include "Thunder.h"
+#include "FightScene.h"
 
 USING_NS_CC;
-
-using namespace CocosDenshion;
 
 static cocos2d::Size designResolutionSize = cocos2d::Size(720, 480);
 static cocos2d::Size smallResolutionSize = cocos2d::Size(480, 320);
@@ -42,9 +40,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto glview = director->getOpenGLView();
     if(!glview) {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
-        glview = GLViewImpl::createWithRect("Thunder", Rect(0, 0, designResolutionSize.width, designResolutionSize.height));
+        glview = GLViewImpl::createWithRect("Demo", Rect(0, 0, designResolutionSize.width, designResolutionSize.height));
 #else
-        glview = GLViewImpl::create("Thunder");
+        glview = GLViewImpl::create("Demo");
 #endif
         director->setOpenGLView(glview);
     }
@@ -77,7 +75,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
     // create a scene. it's an autorelease object
-    auto scene = Thunder::createScene();
+    auto scene = FightScene::createScene();
 
     // run
     director->runWithScene(scene);
@@ -90,7 +88,7 @@ void AppDelegate::applicationDidEnterBackground() {
     Director::getInstance()->stopAnimation();
 
     // if you use SimpleAudioEngine, it must be pause
-     SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
+    // SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
 }
 
 // this function will be called when the app is active again
@@ -98,5 +96,5 @@ void AppDelegate::applicationWillEnterForeground() {
     Director::getInstance()->startAnimation();
 
     // if you use SimpleAudioEngine, it must resume here
-     SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+    // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
 }
